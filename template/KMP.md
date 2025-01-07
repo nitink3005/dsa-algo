@@ -49,7 +49,7 @@ while(i < m) {
 ### KMP Code
 - adv of LPS is to not send j back entirely
 - TC : O(M+N), SC: O(M) where M is length of pattern, N is length of string txt
-```
+```c++
 class Solution {
     public:
         void computeLPS(string pattern, vector<int>&lps) {
@@ -93,9 +93,9 @@ class Solution {
                 j++;
             }
 
-            if(j == M) {         //found the pattern
-                result.push_back(i-j); //for 1 based indexing result.push_back(i-j+1)
-                j = lps[j-1]; //to find other idx of pattern matching we move j back to lps[j-1]
+            if(j == M) {                //found the pattern
+                result.push_back(i-j);  //for 1 based indexing result.push_back(i-j+1)
+                j = lps[j-1];           //to find other idx of pattern matching we move j back to lps[j-1]
             } else if(i < N && pat[j]!=txt[i]) {
                 if(j != 0) {
                     j = lps[j-1];
