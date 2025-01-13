@@ -92,7 +92,7 @@ COMMIT
 - we then encode for the random id and store mapping of short url and original urls in db.
   
 
-## Storage
+  ## Storage
     - We store mapping b/w short url and actual url in database
     - Schema : short_code | url
                 bpqdpq    |  https://
