@@ -119,11 +119,4 @@ COMMIT
     
 
 ## Diagram
-
-
-
-## Extra Info
-The key here is that instead of going to disk we access the mapping directly from memory. This difference in access speed is significant:
-Memory access time: ~100 nanoseconds (0.0001 ms)
-SSD access time: ~0.1 milliseconds
-HDD access time: ~10 milliseconds
+<img src="./img/url_shortner_hld.svg">
