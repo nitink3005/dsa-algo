@@ -127,7 +127,7 @@ We primarily need three components to send and ios notifcation.
   - We trade correctness of system with space efficiency.
   - The Iterator checks redis bloom filter for users and then based on if user exist don't send msg to SQS 1 else sends to it marketing campaign msg.
 
-  - <b>BF.RESERVE {key} {error_rate} {capacity} [EXPANSION expansion] [NONSCALING]</br>
+  - <b>BF.RESERVE {key} {error_rate} {capacity} [EXPANSION expansion] [NONSCALING]</b>
   ```code
     BF.RESERVE bikes:models 0.001 1000000
     OK
