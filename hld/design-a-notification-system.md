@@ -81,7 +81,7 @@ We primarily need three components to send and ios notifcation.
 
 ### Approach 1:
 
-- We need a UI & simple backend to create notification templates that will be ocnfigured by internal team.
+- We need a UI & simple backend to create notification templates that will be configured by internal team.
 - Number of notification template will not be huge and can fit into a single machine, so we start with relational DB.
 - Users can be notified via multiple channels(email, sms, mobile push notification) , we invoke these programatically to send notification, so we have to configure their SDK/s and libraries.
   <img src="./img/notification_system/day-0-notifcation-svs.svg">
@@ -93,7 +93,7 @@ We primarily need three components to send and ios notifcation.
 ### Approach 2:
 
 <img src="./img//notification_system/day-1-arch.png">
-- SQS offers reliablity if msg fails it appears at front of SQS queue again after visibility timeout.(Message queue remove dependencies between components. Message queues serve as buffers when high volumes of notifications are to be sent out.)
+- SQS offers reliablity if msg fails it appears at front of SQS queue again after visibility timeout.(Message queue remove dependencies between components. Message queues serve as buffers when high volumes of notifications are to be sent out.)<br/>
 - Making it async prevents our notification control svc from hogging for retries and all continue sending notfication from other svcs.
 
 ## Support Bulk Notifcations
@@ -127,7 +127,20 @@ We primarily need three components to send and ios notifcation.
   - We trade correctness of system with space efficiency.
   - The Iterator checks redis bloom filter for users and then based on if user exist don't send msg to SQS 1 else sends to it marketing campaign msg.
 
+  - <b>BF.RESERVE {key} {error_rate} {capacity} [EXPANSION expansion] [NONSCALING]</br>
+  ```code
+    BF.RESERVE bikes:models 0.001 1000000
+    OK
+    > BF.ADD bikes:models "Smoky Mountain Striker"
+    (integer) 1
+    > BF.EXISTS bikes:models "Smoky Mountain Striker"
+    (integer) 1
+  ```
+
   - Refer final Arch Diagram
 
 ## Diagram
 <img src="./img//notification_system//Notification-svc-hld.png">
+
+## Refs:
+https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/
