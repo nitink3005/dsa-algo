@@ -71,3 +71,4 @@ int main() {
 }
 ```
 2) [Leetcode 2381. Shifting Letters II](https://leetcode.com/problems/shifting-letters-ii/?envType=problem-list-v2&envId=af10jqbg)
+3) [Leetcode 3356. Zero Array Transformation II](https://leetcode.com/problems/zero-array-transformation-ii/)
